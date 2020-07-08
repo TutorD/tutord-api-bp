@@ -27,8 +27,6 @@ const corsHandler = cors({
     'Content-Type',
     'dry-run',
     'withCredentials',
-    'uid',
-    'orgid',
   ],
   credentials: true,
   origin: (origin, cb) => {
