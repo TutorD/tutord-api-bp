@@ -8,6 +8,10 @@
   "engines": {
     "node": ">= 8.11"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TutorD/tutord-api-bp.git"
+  },
   "scripts": {
     "start": "npm run build && nodemon --config nodemon.json --exec babel-node src/server.js",
     "start:debug": "npm run build && nodemon --inspect --config nodemon.json --exec babel-node src/server.js",
