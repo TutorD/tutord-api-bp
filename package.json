@@ -4,9 +4,14 @@
   "author": "Brandon Bailey",
   "license": "ISC",
   "description": "TutorD Node API Boilerplate for application development",
+  "keywords": [
+    "TutorD",
+    "Boilerplate",
+    "bp"
+  ],
   "main": "src/server.js",
   "engines": {
-    "node": ">= 8.11"
+    "node": ">= 14.5"
   },
   "repository": {
     "type": "git",
@@ -25,11 +30,6 @@
     "test:ci": "jest && npm run format:check",
     "db:seed": "DEBUG=mongo-seeding babel-node seed/seed.js"
   },
-  "keywords": [
-    "TutorD",
-    "Boilerplate",
-    "bp"
-  ],
   "jest": {
     "testEnvironment": "node"
   },

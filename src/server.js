@@ -1,8 +1,8 @@
 'use strict';
 
-console.log('server.js');
-
 import app from './config/express';
+
+console.log('server.js');
 
 let server = app.listen(process.env.TUTORD_HTTP_PORT, () => {
   console.log(

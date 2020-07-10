@@ -10,9 +10,6 @@
     "test/",
     "decls/"
   ],
-  "events": {
-    "restart": "npm run start"
-  },
   "verbose": true,
   "ext": "js json"
 }

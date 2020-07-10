@@ -1,13 +1,13 @@
 'use strict';
 
-console.log('express.js');
-
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import * as HTTPStatus from 'http-status-codes';
 import env from './env';
+
+console.log('express.js');
 
 const API = require('../api');
 
