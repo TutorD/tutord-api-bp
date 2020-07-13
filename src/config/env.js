@@ -12,3 +12,4 @@ const checkEnvVar = name => {
 checkEnvVar('TUTORD_HTTP_PORT');
 checkEnvVar('TUTORD_CORS');
 checkEnvVar('TUTORD_MONGODB_URI');
+checkEnvVar('LOG_LEVEL');

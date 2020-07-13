@@ -4,10 +4,10 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import morgan from 'morgan';
 import * as HTTPStatus from 'http-status-codes';
 import env from './env';
-
-console.log('express.js');
+import logger from '../utils/logger';
 
 const API = require('../api');
 
@@ -40,6 +40,7 @@ app.use(corsHandler);
 // Cookie Parser
 app.use(cookieParser());
 
+app.use(morgan('combined', { stream: logger.stream }));
 // Body Parser for for parsing application/json <= 5MB
 app.use(bodyParser.json({ limit: '5mb' }));
 

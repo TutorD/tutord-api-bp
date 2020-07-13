@@ -16,7 +16,7 @@ API.get('/status', (req, res, next) => {
 
 API.post('/test', (req, res, next) => {
   console.log('/test endpoint reached, req.body: ', req.body);
-  
+
   res.status(HTTPStatus.OK).json({
     message: `Received this ${req.body.field}`,
   });
