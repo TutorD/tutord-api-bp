@@ -5,9 +5,10 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
-import * as HTTPStatus from 'http-status-codes';
+
 import env from './env';
 import logger from '../utils/logger';
+import { unprocessableEntity, notFound } from '../lib/errors';
 
 const API = require('../api');
 
@@ -49,5 +50,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Router
 app.use('/api', API);
+
+app.get('/error', (req, res, next) => {
+  logger.error('/error route reached');
+  const err = new Error('Unprocessable Entity!');
+  next(unprocessableEntity(err));
+});
+
+// Not Found Handler
+app.use((req, res, next) => {
+  next(notFound(req));
+});
+
+app.use((err, req, res, next) => {
+  let error = err;
+  const host = req.headers.host || '';
+  
+  if (error.status >= 400 && error.status <= 499) {
+    logger.error(`4XX Error, ${err.message}`);
+  } else {
+    logger.error('Unknown Error');
+  }
+  
+  res.status(error.status).json({
+    code: error.code,
+    status: error.status,
+    title: error.title,
+    detail: error.detail,
+    path: error.path
+  });
+});
 
 export default app;

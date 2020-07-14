@@ -2,11 +2,12 @@
 
 import { Router } from 'express';
 import * as HTTPStatus from 'http-status-codes';
+import logger from '../../utils/logger';
 
-let API = new Router();
+const API = new Router();
 
 API.get('/', (req, res, next) => {
-  console.log('/api/v1 endpoint reached');
+  logger.info('/api/v1 endpoint reached');
   res.status(HTTPStatus.OK).json({
     status: HTTPStatus.getStatusText(HTTPStatus.OK),
   });

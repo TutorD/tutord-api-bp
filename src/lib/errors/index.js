@@ -81,25 +81,39 @@ function serviceUnavailable(error) {
     error,
   );
 }
+
+function unprocessableEntity(error) {
+  return new AppError(
+    HTTPStatus.UNPROCESSABLE_ENTITY,
+    getStatusText(HTTPStatus.UNPROCESSABLE_ENTITY),
+    'Unprocessable Entity',
+    `Unable to process resource`,
+    undefined,
+    error,
+  );
+}
+
 // function AppError(status, code, title, detail, path, error) {
-function notFound(resource) {
+function notFound(error) {
   return new AppError(
     HTTPStatus.NOT_FOUND,
     getStatusText(HTTPStatus.NOT_FOUND),
     'Not Found',
-    `Resource not found: ${resource.path}`,
-    resource.path,
+    `Resource not found: ${error.path}`,
+    error.path,
+    error
   );
 }
 
 module.exports = {
   AppError,
-  alreadyExists,
-  badRequest,
-  forbidden,
-  internal,
-  path,
-  notFound,
-  serviceUnavailable,
   unauthorized,
+  forbidden,
+  path,
+  badRequest,
+  alreadyExists,
+  internal,
+  serviceUnavailable,
+  unprocessableEntity,
+  notFound,
 };

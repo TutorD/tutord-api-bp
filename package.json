@@ -72,6 +72,7 @@
     "nodemon": "^2.0.4",
     "prettier": "2.0.5",
     "rimraf": "^3.0.2",
+    "standard": "^14.3.4",
     "supertest": "^4.0.2"
   }
 }

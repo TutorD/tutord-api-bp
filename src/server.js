@@ -3,7 +3,7 @@
 import app from './config/express';
 import logger from './utils/logger';
 
-let server = app.listen(process.env.TUTORD_HTTP_PORT, () => {
+const server = app.listen(process.env.TUTORD_HTTP_PORT, () => {
   logger.info(
     `TutorD API BP server started on ${process.env.TUTORD_HTTP_PORT}`,
   );
