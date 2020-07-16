@@ -1,0 +1,32 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "TutorD Node API Boilerplate",
+    "description": "API description in JSON.",
+    "contact": {
+      "name": "Admin",
+      "url": "https://tutord.io",
+      "email": "admin@tutord.io"
+    }
+  },
+  "host": "localhost:3001",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/status": {
+      "get": {
+        "tags": [
+          "General Healthcheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "Server Healthy"
+          }
+        }
+      }
+    }
+  }
+}

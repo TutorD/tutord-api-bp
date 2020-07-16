@@ -10,6 +10,9 @@ import env from './env';
 import logger from '../utils/logger';
 import { internal, notFound } from '../lib/errors';
 
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../../swagger.json';
+
 const API = require('../api');
 
 const app = express();
@@ -47,6 +50,9 @@ app.use(bodyParser.json({ limit: '5mb' }));
 
 // Body Parser for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// OpenAPI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Router
 app.use('/api', API);
