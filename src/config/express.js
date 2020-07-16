@@ -8,7 +8,7 @@ import morgan from 'morgan';
 
 import env from './env';
 import logger from '../utils/logger';
-import { unprocessableEntity, notFound } from '../lib/errors';
+import { internal, notFound } from '../lib/errors';
 
 const API = require('../api');
 
@@ -51,12 +51,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Router
 app.use('/api', API);
 
-app.get('/error', (req, res, next) => {
-  logger.error('/error route reached');
-  const err = new Error('Unprocessable Entity!');
-  next(unprocessableEntity(err));
-});
-
 // Not Found Handler
 app.use((req, res, next) => {
   next(notFound(req));
@@ -68,11 +62,13 @@ app.use((err, req, res, next) => {
   
   if (error.status >= 400 && error.status <= 499) {
     logger.error(`4XX Error, ${err.message}`);
+    logger.error('Error Stack Trace: ', err.stack.toString());;
   } else {
-    logger.error('Unknown Error');
+    logger.error(`Unknown Error, ${err.message}`);
+    logger.error('Error Stack Trace: ', err.stack.toString());;
   }
   
-  res.status(error.status).json({
+  return res.status(error.status).json({
     code: error.code,
     status: error.status,
     title: error.title,
