@@ -93,7 +93,6 @@ function unprocessableEntity(error) {
   );
 }
 
-// function AppError(status, code, title, detail, path, error) {
 function notFound(error) {
   return new AppError(
     HTTPStatus.NOT_FOUND,

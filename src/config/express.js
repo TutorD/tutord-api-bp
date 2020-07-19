@@ -11,7 +11,7 @@ import logger from '../utils/logger';
 import { internal, notFound } from '../lib/errors';
 
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from '../../swagger.json';
+import swaggerDoc from '../../swagger';
 
 const API = require('../api');
 
@@ -44,15 +44,17 @@ app.use(corsHandler);
 // Cookie Parser
 app.use(cookieParser());
 
+// Logger
 app.use(morgan('combined', { stream: logger.stream }));
+
 // Body Parser for for parsing application/json <= 5MB
 app.use(bodyParser.json({ limit: '5mb' }));
 
 // Body Parser for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// OpenAPI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// OpenAPI Docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // Router
 app.use('/api', API);
